@@ -40,6 +40,7 @@
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -78,6 +79,7 @@
     <Compile Include="Core\Providers\CommandParser.cs" />
     <Compile Include="Core\Providers\ConsoleReader.cs" />
     <Compile Include="Core\Providers\ConsoleWriter.cs" />
+    <Compile Include="Decorators\AnnouncerCommandDecorator.cs" />
     <Compile Include="Models\Abstractions\User.cs" />
     <Compile Include="Models\Contracts\IUser.cs" />
     <Compile Include="Models\Contracts\ICourse.cs" />
