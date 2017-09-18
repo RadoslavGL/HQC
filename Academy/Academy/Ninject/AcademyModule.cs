@@ -42,6 +42,7 @@ namespace Academy.Ninject
             this.Bind<ICommand>().To<CreateSeasonCommand>().Named("CreateSeason");
             this.Bind<ICommand>().To<CreateStudentCommand>().Named("CreateStudent");
             this.Bind<ICommand>().To<CreateTrainerCommand>().Named("CreateTrainer");
+            this.Bind<ICommand>().To<CreateLectureResourceCommand>().Named("CreateLectureResource");
 
             this.Bind<ICommand>().To<ListCoursesInSeasonCommand>().Named("ListCoursesInSeason");
             this.Bind<ICommand>().To<ListUsersCommand>().Named("ListUsers");

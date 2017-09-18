@@ -9,12 +9,14 @@ namespace Academy.Commands.Adding
     public class AddTrainerToSeasonCommand : ICommand
     {
         private readonly IAcademyFactory factory;
-        private readonly IEngine engine;
+        private readonly IDataBase dataBase;
 
-        public AddTrainerToSeasonCommand(IAcademyFactory factory, IEngine engine)
+        //private readonly IEngine engine;
+
+        public AddTrainerToSeasonCommand(IAcademyFactory factory, IDataBase dataBase)
         {
             this.factory = factory;
-            this.engine = engine;
+            this.dataBase = dataBase;
         }
 
         public string Execute(IList<string> parameters)
@@ -22,8 +24,8 @@ namespace Academy.Commands.Adding
             var trainerUsername = parameters[0];
             var seasonId = parameters[1];
 
-            var trainer = this.engine.Trainers.Single(x => x.Username.ToLower() == trainerUsername.ToLower());
-            var season = this.engine.Seasons[int.Parse(seasonId)];
+            var trainer = this.dataBase.Trainers.Single(x => x.Username.ToLower() == trainerUsername.ToLower());
+            var season = this.dataBase.Seasons[int.Parse(seasonId)];
 
             if (season.Trainers.Any(x => x.Username.ToLower() == trainerUsername.ToLower()))
             {

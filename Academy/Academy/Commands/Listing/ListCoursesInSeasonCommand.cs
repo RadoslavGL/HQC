@@ -7,18 +7,19 @@ namespace Academy.Commands.Listing
     public class ListCoursesInSeasonCommand : ICommand
     {
         private readonly IAcademyFactory factory;
-        private readonly IEngine engine;
+        private readonly IDataBase dataBase;
+        //private readonly IEngine engine;
 
-        public ListCoursesInSeasonCommand(IAcademyFactory factory, IEngine engine)
+        public ListCoursesInSeasonCommand(IAcademyFactory factory, IDataBase dataBase)
         {
             this.factory = factory;
-            this.engine = engine;
+            this.dataBase = dataBase;
         }
 
         public string Execute(IList<string> parameters)
         {
             var seasonId = parameters[0];
-            var season = this.engine.Seasons[int.Parse(seasonId)];
+            var season = this.dataBase.Seasons[int.Parse(seasonId)];
 
             return season.ListCourses();
         }

@@ -9,19 +9,21 @@ namespace Academy.Commands.Listing
     public class ListUsersCommand : ICommand
     {
         private readonly IAcademyFactory factory;
-        private readonly IEngine engine;
+        private readonly IDataBase dataBase;
 
-        public ListUsersCommand(IAcademyFactory factory, IEngine engine)
+        //private readonly IEngine engine;
+
+        public ListUsersCommand(IAcademyFactory factory, IDataBase dataBase)
         {
             this.factory = factory;
-            this.engine = engine;
+            this.dataBase = dataBase;
         }
 
         public string Execute(IList<string> parameters)
         {
             var builder = new StringBuilder();
-            var trainers = this.engine.Trainers;
-            var students = this.engine.Students;
+            var trainers = this.dataBase.Trainers;
+            var students = this.dataBase.Students;
 
             if (trainers.Any())
             {
