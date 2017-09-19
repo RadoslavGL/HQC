@@ -24,22 +24,31 @@ namespace Academy.UnitTests.Code.EngineTests
             var commandMock = new Mock<ICommand>();
             string exceptionMessage = "testException";
             string messageToWrite = "Invalid command parameters supplied or the entity with that ID for does not exist.";
+            StringBuilder buiolde = new StringBuilder();
+            buiolde.AppendLine(messageToWrite);
+            string result = buiolde.ToString();
 
             readerMock.SetupSequence(m => m.ReadLine())
                 .Returns("Some command")
                 .Returns("Exit");
 
-            parserMock.Setup(m => m.ParseCommand(It.IsAny<string>())).Returns(commandMock.Object);
+            parserMock
+                .Setup(m => m.ParseCommand(It.IsAny<string>()))
+                .Returns(commandMock.Object);
 
-            parserMock.Setup(m => m.ParseParameters(It.IsAny<string>())).Throws(new Exception(messageToWrite));
+            parserMock
+                .Setup(m => m.ParseParameters(It.IsAny<string>()))
+                .Throws(new Exception(messageToWrite));
 
-            var engine = new Engine(readerMock.Object, writerMock.Object, parserMock.Object);
+            var engine = new Engine(readerMock.Object,
+                writerMock.Object, 
+                parserMock.Object);
 
             //Act
             engine.Start();
 
             //Assert
-            writerMock.Verify(m => m.WriteLine(messageToWrite));
+            writerMock.Verify(m => m.Write(result));
 
         }
     }

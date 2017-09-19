@@ -16,7 +16,6 @@ namespace Academy.Decorators
             Guard.WhenArgument(command, "command").IsNull().Throw();
             Guard.WhenArgument(writer, "writer").IsNull().Throw();
 
-            this.command = command;
             this.writer = writer;
         }
 
