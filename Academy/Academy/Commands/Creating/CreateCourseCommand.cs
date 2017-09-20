@@ -1,5 +1,6 @@
 ﻿using Academy.Commands.Contracts;
 using Academy.Core.Contracts;
+using System;
 using System.Collections.Generic;
 
 namespace Academy.Commands.Creating
@@ -13,8 +14,8 @@ namespace Academy.Commands.Creating
 
         public CreateCourseCommand(IAcademyFactory factory, IDataBase dataBase)
         {
-            this.factory = factory;
-            this.dataBase = dataBase;
+            this.factory = factory ?? throw new ArgumentNullException("factory");
+            this.dataBase = dataBase ?? throw new ArgumentNullException("dataBase");
         }
 
         public string Execute(IList<string> parameters)

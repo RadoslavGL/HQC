@@ -27,37 +27,8 @@ namespace Academy.Core
             this.reader = reader;
             this.writer = writer;
             this.parser = parser;
-
-            //this.Reader = new ConsoleReader(); 
-            //this.Writer = new ConsoleWriter();
-            //this.Parser = new CommandParser();
-
-            //this.Seasons = new List<ISeason>();
-            //this.Students = new List<IStudent>();
-            //this.Trainers = new List<ITrainer>();
         }
 
-        //public static IEngine Instance
-        //{
-        //    get
-        //    {
-        //        return instanceHolder;
-        //    }
-        //}
-
-        // Property dependencty injection not validated for simplicity
-        //public IReader Reader { get; set; }
-
-        //public IWriter Writer { get; set; }
-
-        //public IParser Parser { get; set; }
-
-
-        //public IList<ISeason> Seasons { get; private set; }
-
-        //public IList<IStudent> Students { get; private set; }
-
-        //public IList<ITrainer> Trainers { get; private set; }
 
 
         public void Start()
