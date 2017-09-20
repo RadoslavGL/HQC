@@ -41,7 +41,7 @@ namespace Academy.UnitTests.Commands.Creating.CreateCourseCommandTests
             };
 
             List<ICourse> courses = new List<ICourse>();
-            secondSeasonMock.Setup(m => m.Courses).Returns(courses);
+            secondSeasonMock.SetupGet(m => m.Courses).Returns(courses);
 
             factoryMock.Setup(m => m.CreateCourse(name, lecturesPerWeek, startingDate)).Returns(courseMock.Object);
             dataBaseMock.SetupGet(m => m.Seasons).Returns(seasons);
@@ -54,7 +54,7 @@ namespace Academy.UnitTests.Commands.Creating.CreateCourseCommandTests
 
             // Assert
             Assert.AreEqual(1, secondSeasonMock.Object.Courses.Count); // should be one; no need to look in teh databaseMock
-            Assert.AreSame(courseMock, secondSeasonMock.Object.Courses.Single()); //don't forget to add Linq
+            Assert.AreSame(courseMock, secondSeasonMock.Object.Courses.First()); //don't forget to add Linq
 
         }
     }
